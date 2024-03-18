@@ -22,6 +22,7 @@ jsx.prototype.replaceChild = function (newChild, oldChild) {
 export function jsx(type, props, ...children) {
   return new Jsx(type, props, ...children);
 }
+// todo - es6 class로 변경
 
 
 export function createElement(node) {
