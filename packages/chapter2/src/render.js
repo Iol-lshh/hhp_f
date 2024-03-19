@@ -6,23 +6,22 @@ function Jsx(type, props, ...children) {
   };
   return this.node;
 }
-jsx.prototype.removeAttribute = function (key) {
-  this.node.props[key] = undefined;
-}
-jsx.prototype.removeChild = function (child) {
-  this.node.children = this.node.children.filter(c => c !== child);
-}
-jsx.prototype.appendChild = function (child) {
-  this.node.children.push(child);
-}
-jsx.prototype.replaceChild = function (newChild, oldChild) {
-  this.node.children = this.node.children.map(c => c === oldChild ? newChild : c);
-}
+// jsx.prototype.removeAttribute = function (key) {
+//   this.node.props[key] = undefined;
+// }
+// jsx.prototype.removeChild = function (child) {
+//   this.node.children = this.node.children.filter(c => c !== child);
+// }
+// jsx.prototype.appendChild = function (child) {
+//   this.node.children.push(child);
+// }
+// jsx.prototype.replaceChild = function (newChild, oldChild) {
+//   this.node.children = this.node.children.map(c => c === oldChild ? newChild : c);
+// }
 
 export function jsx(type, props, ...children) {
   return new Jsx(type, props, ...children);
 }
-// todo - es6 class로 변경
 
 
 export function createElement(node) {

@@ -1,6 +1,16 @@
 export function createHooks(callback) {
+
   const useState = (initState) => {
-    return [];
+    let variable = initState;
+
+    const setter = (newVal) => {
+      if(variable === newVal) return;
+      console.log(variable, newVal);
+      variable = newVal;
+      callback();
+    };
+
+    return [variable, setter];
   };
 
   const useMemo = (fn, refs) => {
@@ -8,7 +18,7 @@ export function createHooks(callback) {
   };
 
   const resetContext = () => {
-
+    
   }
 
   return { useState, useMemo, resetContext };
