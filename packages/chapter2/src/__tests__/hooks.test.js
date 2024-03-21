@@ -67,7 +67,7 @@ describe("hooks test", () => {
 
       expect(result).toBe(`a: foo, b: bar`);
 
-      resetContext();
+      resetContext(); // 이때 a setA, b setB 를 가지고 있다가 돌려줘야 한다! 근데, 그게 리엑트의 정상적인 동작인가? context는 무엇을 의미하는가? 실행 컨텍스트?
       setA("foo-change");
       expect(result).toBe(`a: foo-change, b: bar`);
 
@@ -88,10 +88,14 @@ describe("hooks test", () => {
       }
 
       const { useMemo, resetContext } = createHooks(getMemo);
+      // getMemo를 콜백
 
       const memo1 = getMemo();
       const memo2 = getMemo();
 
+      // memo1은 useMemo(() => [], [])
+      // useMemo는  fn, refs를 받아서 fn()을 리턴한다.
+      // refs는 참조, fn은 함수
       expect(memo1).toBe(memo2);
     });
 
